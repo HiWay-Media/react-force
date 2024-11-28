@@ -16,11 +16,14 @@ const HOTKEYS: { [key: string]: string } = {
 const IMAGE_KEY = 'mod+k';
 
 export interface SlateEditorProps {
+    placeholder?: string
+    disabled?: boolean
+    readOnly?: boolean
     value: Array<Node>;
     onChange: (value: Array<Node>) => void;
 }
 
-export const SlateEditor = ({ value, onChange }: SlateEditorProps) => {
+export const SlateEditor = ({ value, placeholder, disabled, readOnly, onChange }: SlateEditorProps) => {
     // Ensure the following order of precedence for the plugins:
     //   withImages > withLinks > withHtml
     const editor = useMemo(
@@ -64,6 +67,9 @@ export const SlateEditor = ({ value, onChange }: SlateEditorProps) => {
             ) : null}
 
             <Editable
+                placeholder={placeholder}
+                disabled={disabled}
+                readOnly={readOnly}
                 renderElement={renderElement}
                 renderLeaf={renderLeaf}
                 spellCheck
