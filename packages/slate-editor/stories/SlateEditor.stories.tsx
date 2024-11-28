@@ -28,7 +28,7 @@ export const SlateEditorStory = () => {
         <Fragment>
             <Box display="flex">
                 <Box width="50%" p={2}>
-                    <SlateEditor value={value} onChange={setValue} />
+                    <SlateEditor placeholder='Type something' value={value} onChange={setValue} />
                 </Box>
                 <HtmlView
                     width="50%"
